@@ -1,0 +1,31 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        num=0
+        greek = list()
+        roman = list(s)
+        for char in roman:
+            if char =='I':
+                greek.append(1)
+            if char =='V':
+                greek.append(5)
+            if char =='X':
+                greek.append(10)
+            if char =='L':
+                greek.append(50)
+            if char =='C':
+                greek.append(100)
+            if char =='D':
+                greek.append(500)
+            if char =='M':
+                greek.append(1000)
+        while len(greek)>1:
+            if greek[1]>greek[0]:
+                num+=greek[1]-greek[0]
+                greek.pop(0)
+                greek.pop(0)
+            else:
+                num+=greek[0]
+                greek.pop(0)
+        if len(greek)==1:
+            num+=greek[0]
+        return num
